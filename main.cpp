@@ -5,7 +5,7 @@
 using namespace std;
 
 string encriptacion(string);
-string desencriptacion(int);
+
 
 int main()
 {
@@ -20,7 +20,7 @@ int main()
         val=1;
     }
     if(ingreso==2){
-        validacion="administrador";
+        validacion="administrador";    //AbCd
         val=2;
 
     }
@@ -29,22 +29,28 @@ int main()
 
     }
     case(2):{//administrador
+        bool itero=false;
         Leer.open("../practica3_2/BD/sudo.txt");
         if(!Leer.is_open()){
             cout << "Error abriendo el archivo" << endl;
             exit(1);
         }
+        while(itero==false){
         Leer>>clave;
         cout<<"ingrese la clave para entrar como administrador";
         cin>>clavein;
+        if (clavein=="1"){
+            break;
+        }
         clavenc=encriptacion(clavein);
         if(clavenc==clave){
             cout<<"bienvenido administrador"<<endl;
+            itero=true;
         }
         else{
-            cout<<"pro favor ingrese la clave correcta"<<endl;
+            cout<<"por favor ingrese la clave correcta o oprima 1 para salir"<<endl;
         }
-
+        }
     }
     }
 
@@ -80,8 +86,3 @@ string encriptacion(string a){
     return(strencriptado);
 }
 
-
-
-string desencriptacion(){
-
-}
